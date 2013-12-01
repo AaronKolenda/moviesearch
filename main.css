@@ -1,0 +1,154 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+   This is the CSS reset.
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	background-color: fff;
+	font-family: Arial,sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+	height: 100%;
+}
+
+html {
+	height: 100%;
+	}
+	
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* CSS reset is above. My CSS starts here */
+  
+#container { margin-left: auto; 			/* A container element centers the page */ 
+    margin-right: auto;
+	margin-top: 100px;
+    width:80%;
+    min-width:900px;
+    color:#000000;
+    border:1px solid #000000;
+	text-align: center;
+	background-color: #ffffff;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+body {
+background-color: #202020;
+}
+
+h1 {
+	font-size: 25px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-shadow: 3px 3px #E6E6FA;
+}
+
+input[type="text"]{
+	width: 550px;
+	height: 25px;
+	font-family: Arial, sans serif;
+	font-size: 22px;
+	}
+	
+	
+#container > input{
+	margin-top: 50px;
+	text-align:left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p {
+	text-shadow: 2px 2px #E6E6FA;
+	font-size: 15px;
+	font-family: Arial, sans-serif;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+input[type="button"]{
+	display: block;
+	text-shadow: 2px 2px #E6E6FA;
+	font-size: 15px;
+	font-family: Arial, sans-serif;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+#amazonContain {
+width:800px;
+position: relative;
+margin: 20px auto;
+text-align: center;
+}
+
+#amazon {
+width:800px;
+}
+
+#info {
+text-align: center;
+width: 800px;
+font-family: Arial, sans-serif;
+font-size: 15px;
+line-height: 20px;
+font-style: italic;
+margin: 0px auto;
+}
+
+#infoContain {
+margin: 0px auto;
+text-align: center;
+width: 800px;
+}
+
+.genre {
+display:inline;
+margin: 0px auto;
+text-align: center;
+padding-right:20px;
+padding-left:20px;
+}
