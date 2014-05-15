@@ -23,25 +23,30 @@ $(document).ready(function() {
 		$("#info").fadeIn(4000);
 		}
 	
-		//get the json object from imdb
 		
-		$.getJSON("http://mymovieapi.com/?title=" + searchT + "&type=json&plot=full&episode=0&limit=1" + 
-		"&yg=0&mt=none&lang=en-US&offset=&aka=simple&release=simple&business=0&tech=0", function(json) {
-		console.dir(json);
+		// Send Request
+		var http = new XMLHttpRequest;
+		http.open("GET", "http://www.omdbapi.com/?t=" + searchT, false);
+		http.send(null);
+
+		// Response to JSON
+		var omdbData = http.responseText;
+		var omdbJSON = eval("(" + omdbData + ")");
+		console.dir(omdbData);   //look at the returned data in the console
 		
-		if (json[0]) {								//if the json object exists...
-			console.log("json[0] is true");
-			var year = json[0].year;				//get variables from json
-			var imdbURL = json[0].imdb_url;
-			var title = json[0].title;
+		
+		if (omdbJSON.Response === "True") {				//if the api call worked...
+			console.log("inside if statement and omdbJSON.Response is " + omdbJSON.Response);
+			var year = omdbJSON.Year;					//get variables from json
+			var title = omdbJSON.Title;
 			
-			if (json[0].poster) {							//check if poster exists, if it does set as background
-			var poster = json[0].poster.imdb;
+			if (omdbJSON.Poster) {						//check if poster exists, if it does set as background
+			var poster = omdbJSON.Poster;
 			$("body").css("background-image", "url(" + poster + ")");
 			}
 			
-			if (json[0].plot) {								//if the plot isn't in imdb's database, display error
-			var plot = json[0].plot;						//otherwise set plot as variable
+			if (omdbJSON.Plot) {							//if the plot isn't in imdb's database, display error
+			var plot = omdbJSON.Plot;						//otherwise set plot as variable
 			}
 			else {
 			plot = "Plot Unavailable"; 
@@ -49,11 +54,18 @@ $(document).ready(function() {
 		
 			$("#info").empty();									//clear the info div and add new info
 			$("#info").append(title + "<br/>" + year + "<br/>");
-		
-			var genres = new Array();							//loop through genre array and append to info div
-				for (x=0; x < json[0].genres.length; x++) {
-				genres[x] = json[0].genres[x];
-				$("#info").append("<div class='genre'>" + genres[x] + "</div>");
+			
+			var genreString = omdbJSON.Genre;
+			var genreArray = genreString.split(" ");
+			
+				//loop through genre array and append to info div
+				//and get rid of commas at the end of genre strings
+				for (x=0; x < genreArray.length; x++) {
+					if (genreArray[x].charAt(genreArray[x].length-1) == ",") { 
+						var genreTempString = genreArray[x].substring(0, genreArray[x].length - 1);
+						genreArray[x] = genreTempString;
+					}
+				$("#info").append("<div class='genre'>" + genreArray[x] + "</div>");
 				}
 			
 			$("#info").append("<br/><br/>" + plot);				//add plot to info div
@@ -65,12 +77,11 @@ $(document).ready(function() {
 			}
 			
 			else {										//if the title isn't in imdb's database, display error
-			console.log("json[0] isn't true");
 			$("#info").empty();
 			$("#info").append("Title not found");
 			$("#info").fadeIn(4000);
 			}
-		});
+		
 		
 		$('#search').val(""); 	//empty the input field
 		$('#search').focus();   //puts focus back on input field
@@ -84,4 +95,3 @@ $(document).ready(function() {
 	});
 	
 });
-//C90626 red color

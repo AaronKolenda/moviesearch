@@ -59,7 +59,8 @@ table {
 	border-spacing: 0;
 }
 
-/* CSS reset is above. My CSS starts here */
+/* CSS reset is above. My CSS starts here 
+  C90626 - red color*/
   
 #container { margin-left: auto; 			/* A container element centers the page */ 
     margin-right: auto;
@@ -72,6 +73,8 @@ table {
 	background-color: #ffffff;
 	padding: 15px;
 	border-radius: 10px;
+	box-shadow: 0 0 1em 0.5em;
+	opacity: .9;
 }
 
 body {
